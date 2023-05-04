@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pm2": "pm2 start npm --name vivu-today -- run start -- -p 8084"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.12",
