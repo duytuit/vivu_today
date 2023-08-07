@@ -42,7 +42,7 @@ const SiteHeader = () => {
     { name: "Real Estate", slug: "/home-2" },
     { name: "Home 3", slug: "/home-3" },
   ]);
-  const [headerSelected, setHeaderSelected] = useState<SiteHeaders>("Header 2");
+  const [headerSelected, setHeaderSelected] = useState<SiteHeaders>("Header 1");
 
   const [isTopOfPage, setIsTopOfPage] = useState(true);
 

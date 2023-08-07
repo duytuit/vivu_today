@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   experimental: {
     appDir: true,
-    typedRoutes: true,
+    // typedRoutes: true,
   },
   images: {
     remotePatterns: [
@@ -32,7 +32,7 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
-  },
+  }
 };
 
 module.exports = nextConfig;
