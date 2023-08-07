@@ -9,31 +9,31 @@ import Image from "next/image";
 
 export interface Card12Props {
   className?: string;
-  post?: PostDataType;
+  // post?: PostDataType;
+  post?: any;
 }
 
 const Card12: FC<Card12Props> = ({
   className = "h-full",
-  post = DEMO_POSTS[0],
+  post
 }) => {
-  const { title, href, featuredImage, desc, postType } = post;
 
   return (
     <div className={`nc-Card12 group relative flex flex-col ${className}`}>
       <Link
-        href={href}
+        href={''}
         className="block flex-shrink-0 flex-grow relative w-full h-0 aspect-w-4 aspect-h-3 rounded-3xl overflow-hidden"
       >
         <Image
           fill
-          src={featuredImage}
-          alt={title}
+          src={''}
+          alt={post.name}
           sizes="(max-width: 768px) 100vw, 400px"
         />
         <span>
           <PostTypeFeaturedIcon
             className="absolute bottom-2 left-2"
-            postType={postType}
+            postType={'standard'}
             wrapSize="w-8 h-8"
             iconSize="w-4 h-4"
           />
@@ -46,12 +46,12 @@ const Card12: FC<Card12Props> = ({
         <h2
           className={`nc-card-title block font-semibold text-neutral-900 dark:text-neutral-100 transition-colors text-lg sm:text-2xl`}
         >
-          <Link href={href} className="line-clamp-2" title={title}>
-            {title}
+          <Link href={''} className="line-clamp-2" title={post.title}>
+            {post.title}
           </Link>
         </h2>
         <span className="hidden sm:block mt-4 text-neutral-500 dark:text-neutral-400">
-          <span className="line-clamp-2"> {desc}</span>
+          <span className="line-clamp-2"> {post.title}</span>
         </span>
         <PostCardMeta className="mt-5" meta={post} />
       </div>

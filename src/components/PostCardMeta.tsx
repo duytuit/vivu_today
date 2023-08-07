@@ -10,7 +10,7 @@ export interface PostCardMetaProps {
   size?: "large" | "normal";
 }
 
-const PostCardMeta: FC<PostCardMetaProps> = ({
+const PostCardMeta: FC<any> = ({
   className = "leading-none",
   meta,
   hiddenAvatar = false,
@@ -25,7 +25,7 @@ const PostCardMeta: FC<PostCardMetaProps> = ({
       data-nc-id="PostCardMeta"
     >
       <Link
-        href={author.href}
+        href={author?.href}
         className="flex-shrink-0 relative flex items-center space-x-2"
       >
         {!hiddenAvatar && (
@@ -34,12 +34,12 @@ const PostCardMeta: FC<PostCardMetaProps> = ({
             sizeClass={
               size === "normal" ? "h-7 w-7 text-sm" : "h-10 w-10 text-xl"
             }
-            imgUrl={author.avatar}
-            userName={author.displayName}
+            imgUrl={author?.avatar}
+            userName={author?.displayName}
           />
         )}
         <span className="block text-neutral-6000 hover:text-black dark:text-neutral-300 dark:hover:text-white font-medium">
-          {author.displayName}
+          {author?.displayName}
         </span>
       </Link>
       <>
@@ -47,7 +47,7 @@ const PostCardMeta: FC<PostCardMetaProps> = ({
           ·
         </span>
         <span className="text-neutral-500 dark:text-neutral-400 font-normal line-clamp-1">
-          {date}
+          {''}
         </span>
       </>
     </div>

@@ -9,7 +9,7 @@ export interface PostTypeFeaturedIconProps {
   iconSize?: string;
 }
 
-const PostTypeFeaturedIcon: FC<PostTypeFeaturedIconProps> = ({
+const PostTypeFeaturedIcon: FC<any> = ({
   className = "",
   postType = "standard",
   onClick,

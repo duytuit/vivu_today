@@ -10,35 +10,22 @@ export interface SectionMagazine5Props {
 type Props = {
   promise: Promise<any[]>
 }
-// const SectionMagazine5 = async () => {
+const SectionMagazine5 = async () => {
 
 
   
-//   return (
-//     <div className="nc-SectionMagazine5">
-//       <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
-//         {/* {posts[0] && <Card12 post={posts[0]} />}
-//         <div className="grid gap-6 md:gap-8">
-//           {posts.map((item, index) => (
-//               <Card13 key={index} post={item} />
-//             ))}
-//         </div> */}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SectionMagazine5;
-export default function SectionMagazine5() {
-  const postsData: Promise<any[]> =fetchListPost({projectId:1})
-  const posts =  postsData
-
-  console.log(posts);
-
-
   return (
-      <>
-          
-      </>
-  )
-}
+    <div className="nc-SectionMagazine5">
+      <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
+        {/* {posts[0] && <Card12 post={posts[0]} />}
+        <div className="grid gap-6 md:gap-8">
+          {posts.map((item, index) => (
+              <Card13 key={index} post={item} />
+            ))}
+        </div> */}
+      </div>
+    </div>
+  );
+};
+
+export default SectionMagazine5;

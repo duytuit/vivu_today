@@ -1,3 +1,4 @@
+// "use client"
 import React from "react";
 import SectionAds from "./SectionAds";
 import SectionMagazine5 from "./SectionMagazine5";
@@ -5,10 +6,12 @@ import SectionLatestPosts from "./SectionLatestPosts";
 import BgGlassmorphism from "@/components/BgGlassmorphism";
 import SectionSubscribe2 from "@/components/SectionSubscribe2";
 import { fetchListPost } from "@/components/Blog/service";
+import Card12 from "./Card12";
+import Card13 from "./Card13";
 
-
-const BlogPage: React.FC = () => {
-
+const BlogPage = async () => {
+  const postsData = await fetchListPost({projectId:1})
+   console.log(postsData);
   return (
     <div className="nc-BlogPage overflow-hidden relative">
       {/* ======== BG GLASS ======== */}
@@ -18,9 +21,18 @@ const BlogPage: React.FC = () => {
       <div className="container relative">
         {/* === SECTION 1 === */}
         <div className="pt-12 pb-16 lg:pb-28">
-
+        {/* <div className="nc-SectionMagazine5">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
+            {postsData.rows[0] && <Card12 post={postsData.rows[0]} />}
+            <div className="grid gap-6 md:gap-8">
+              {postsData.rows.map((item:any, index:any) => (
+                  <Card13 key={index} post={item} />
+                ))}
+            </div>
+          </div>
+        </div> */}
         </div>
-        <SectionMagazine5 />
+
         {/* === SECTION 1 === */}
         <SectionAds />
 
