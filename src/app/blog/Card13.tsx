@@ -11,35 +11,35 @@ export interface Card13Props {
 }
 
 const Card13: FC<Card13Props> = ({ className = "", post }) => {
-  const { name, id, updateTime, summary } = post;
-
+  const { name, id, updateTime, summary,status ,image} = post;
+  
   return (
     <div className={`nc-Card13 relative flex ${className}`} data-nc-id="Card13">
       <div className="flex flex-col h-full py-2">
         <h2 className={`nc-card-title block font-semibold text-base`}>
-          <Link href={id} className="line-clamp-2" title={name}>
+          <Link href={`/blog/${id}`} className="line-clamp-2" title={name}>
             {name}
           </Link>
         </h2>
         <span className="hidden sm:block my-3 text-neutral-500 dark:text-neutral-400 ">
           <span className="line-clamp-2"> {summary}</span>
         </span>
-        <span className="mt-4 block sm:hidden text-sm text-neutral-500 ">
+        <span className="mt-4 block sm:block text-sm text-neutral-500 ">
           {updateTime}
         </span>
         <div className="mt-auto hidden sm:block">
-          {/* <PostCardMeta meta={{ ...post }} /> */}
+          <PostCardMeta meta={{ ...post }} />
         </div>
       </div>
 
       <Link
-        href={id}
+        href={`/blog/${id}`}
         className={`block relative h-full flex-shrink-0 w-2/5 sm:w-1/3 ml-3 sm:ml-5`}
       >
         <Image
           fill
           className="object-cover rounded-xl sm:rounded-3xl"
-          src={''}
+          src={image?'/client'+JSON.parse(image).src:''}
           alt={name}
           sizes="(max-width: 768px) 100vw, 400px"
         />

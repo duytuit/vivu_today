@@ -10,8 +10,7 @@ import Card12 from "./Card12";
 import Card13 from "./Card13";
 
 const BlogPage = async () => {
-  const postsData = await fetchListPost({projectId:1})
-   console.log(postsData);
+  const postsData = await fetchListPost({projectId:2})
   return (
     <div className="nc-BlogPage overflow-hidden relative">
       {/* ======== BG GLASS ======== */}
@@ -21,23 +20,23 @@ const BlogPage = async () => {
       <div className="container relative">
         {/* === SECTION 1 === */}
         <div className="pt-12 pb-16 lg:pb-28">
-        {/* <div className="nc-SectionMagazine5">
+        <div className="nc-SectionMagazine5">
           <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
-            {postsData.rows[0] && <Card12 post={postsData.rows[0]} />}
+            {postsData.data.rows[0] && <Card12 post={postsData.data.rows[0]} />}
             <div className="grid gap-6 md:gap-8">
-              {postsData.rows.map((item:any, index:any) => (
-                  <Card13 key={index} post={item} />
+              {postsData.data.rows.map((item:any, index:any) => (
+                   <Card13 key={index} post={item} />
                 ))}
             </div>
           </div>
-        </div> */}
+        </div>
         </div>
 
         {/* === SECTION 1 === */}
-        <SectionAds />
+        {/* <SectionAds /> */}
 
         {/* === SECTION 8 === */}
-        <SectionLatestPosts className="py-16 lg:py-28" />
+        <SectionLatestPosts posts={postsData.data.rows} className="py-16 lg:py-28" />
 
         {/* === SECTION 1 === */}
         <SectionSubscribe2 className="pb-16 lg:pb-28" />

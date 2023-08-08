@@ -1,8 +1,10 @@
+"use client";
 import { CustomLink } from "@/data/types";
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import twFocusClass from "@/utils/twFocusClass";
 import Link from "next/link";
 import { Route } from "@/routers/types";
+import { useHandleParamUrl } from "@/hooks/useHandleParamUrl";
 
 const DEMO_PAGINATION: CustomLink[] = [
   {
@@ -28,6 +30,23 @@ export interface PaginationProps {
 }
 
 const Pagination: FC<PaginationProps> = ({ className = "" }) => {
+  const defaultParam={ pageNum: 1, pageSize: 20 };
+  const {searchParam,setQueryParams} = useHandleParamUrl();
+   useEffect(()=>{
+    setQueryParams(defaultParam)
+  },[searchParam])
+  const Previous=()=>{
+    const pageNum= searchParam.get('pageNum');
+    if(pageNum && parseInt(pageNum) >1){
+      setQueryParams({...defaultParam,pageNum:parseInt(pageNum)-1})
+    }
+  }
+  const Next=()=>{
+    const pageNum= searchParam.get('pageNum');
+    if(pageNum){
+      setQueryParams({...defaultParam,pageNum:parseInt(pageNum)+1})
+    }
+  }
   const renderItem = (pag: CustomLink, index: number) => {
     if (index === 0) {
       // RETURN ACTIVE PAGINATION
@@ -56,7 +75,19 @@ const Pagination: FC<PaginationProps> = ({ className = "" }) => {
     <nav
       className={`nc-Pagination inline-flex space-x-1 text-base font-medium ${className}`}
     >
-      {DEMO_PAGINATION.map(renderItem)}
+        <button className={`inline-flex w-11 h-11 items-center justify-center rounded-full bg-primary-6000 text-white ${twFocusClass()}`}
+         onClick={Previous}
+      >
+        {'<<'}
+      </button>
+      <p>
+        {/* Page {currentPage} of {totalPages} */}
+      </p>
+      <button className={`inline-flex w-11 h-11 items-center justify-center rounded-full bg-primary-6000 text-white ${twFocusClass()}`}
+        onClick={Next}
+      >
+       {'>>'}
+      </button>
     </nav>
   );
 };

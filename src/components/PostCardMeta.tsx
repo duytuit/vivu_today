@@ -5,7 +5,8 @@ import Link from "next/link";
 
 export interface PostCardMetaProps {
   className?: string;
-  meta: Pick<PostDataType, "date" | "author">;
+  // meta: Pick<PostDataType, "date" | "author">;
+   meta:any;
   hiddenAvatar?: boolean;
   size?: "large" | "normal";
 }
@@ -16,7 +17,7 @@ const PostCardMeta: FC<any> = ({
   hiddenAvatar = false,
   size = "normal",
 }) => {
-  const { date, author } = meta;
+  const { name, id, updateTime, summary,status } = meta;
   return (
     <div
       className={`nc-PostCardMeta inline-flex items-center fledx-wrap text-neutral-800 dark:text-neutral-200 ${
@@ -25,7 +26,7 @@ const PostCardMeta: FC<any> = ({
       data-nc-id="PostCardMeta"
     >
       <Link
-        href={author?.href}
+        href={`/blog/${id}`}
         className="flex-shrink-0 relative flex items-center space-x-2"
       >
         {!hiddenAvatar && (
@@ -34,12 +35,12 @@ const PostCardMeta: FC<any> = ({
             sizeClass={
               size === "normal" ? "h-7 w-7 text-sm" : "h-10 w-10 text-xl"
             }
-            imgUrl={author?.avatar}
-            userName={author?.displayName}
+            imgUrl={''}
+            userName={''}
           />
         )}
         <span className="block text-neutral-6000 hover:text-black dark:text-neutral-300 dark:hover:text-white font-medium">
-          {author?.displayName}
+          {''}
         </span>
       </Link>
       <>

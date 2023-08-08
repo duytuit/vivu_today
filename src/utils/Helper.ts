@@ -50,6 +50,13 @@ export const formatCurrencyV2=(value:any) =>{
 }
 export const convertObjToParam=(body:any) =>{
     return Object.keys(body)
+      .map(function (key) {
+        return key + '=' + body[key];
+      })
+      .join('&');
+}
+export const convertObjToParamV2=(body:any) =>{
+    return Object.keys(body)
       .sort()
       .map(function (key) {
         return key + '=' + body[key];

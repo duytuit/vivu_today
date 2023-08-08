@@ -1,7 +1,10 @@
+import { convertObjToParam } from '@/utils/Helper';
 import { listPost } from '../api';
 
 export async function fetchListPost(params:any) {
-    const res = await fetch( `${process.env.REACT_APP_API_URL}system/post/blog/v2/list?projectId=1`)
+    params = convertObjToParam(params);
+    const res = await fetch( `${process.env.REACT_APP_API_URL}system/post/blog/v2/list?${params}` ,{ next: { revalidate: 3 } })
+   // const res = await fetch( `${process.env.REACT_APP_API_URL}system/post/blog/v2/list?projectId=2` ,{ next: { revalidate: 3 } })
     return res.json()
 };
 // export async function fetchListPost(params:any) {
