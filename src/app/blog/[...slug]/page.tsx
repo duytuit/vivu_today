@@ -13,6 +13,7 @@ import travelhero2Image from "@/images/travelhero2.png";
 import Link from "next/link";
 import { Route } from "@/routers/types";
 import { fetchListPost } from "@/components/Blog/service";
+import moment from "moment"
 
 const Page = async ({
   params,
@@ -32,10 +33,10 @@ const Page = async ({
             className=" text-neutral-900 font-semibold text-3xl md:text-4xl md:!leading-[120%] lg:text-4xl dark:text-neutral-100 max-w-4xl "
             title="Quiet ingenuity: 120,000 lunches and counting"
           >
-            {post.name}
+            {post?.name}
           </h1>
           <span className="block text-base text-neutral-500 md:text-lg dark:text-neutral-400 pb-1">
-          {post.summary}
+          {post?.summary}
           </span>
 
           <div className="w-full border-b border-neutral-100 dark:border-neutral-800"></div>
@@ -53,7 +54,7 @@ const Page = async ({
                 </div>
                 <div className="text-xs mt-[6px]">
                   <span className="text-neutral-700 dark:text-neutral-300">
-                  {post.updateTime}
+                  {moment(post.updateTime).format("YYYY-MM-DD HH:mm:ss") }
                   </span>
                   <span className="mx-2 font-semibold">·</span>
                   <span className="text-neutral-700 dark:text-neutral-300">

@@ -4,7 +4,7 @@ import { PostDataType } from "@/data/types";
 import PostTypeFeaturedIcon from "@/components/PostTypeFeaturedIcon";
 import Link from "next/link";
 import Image from "next/image";
-
+import moment from "moment"
 export interface Card13Props {
   className?: string;
   post: any;
@@ -25,7 +25,7 @@ const Card13: FC<Card13Props> = ({ className = "", post }) => {
           <span className="line-clamp-2"> {summary}</span>
         </span>
         <span className="mt-4 block sm:block text-sm text-neutral-500 ">
-          {updateTime}
+          {moment(updateTime).format("YYYY-MM-DD HH:mm:ss")}
         </span>
         <div className="mt-auto hidden sm:block">
           <PostCardMeta meta={{ ...post }} />
