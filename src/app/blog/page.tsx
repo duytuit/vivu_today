@@ -34,9 +34,9 @@ const BlogPage = async ({searchParams}:{searchParams:any}) => {
         <div className="pt-12 pb-16 lg:pb-28">
         <div className="nc-SectionMagazine5">
           <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
-            {postsData.data.rows[0] && <Card12 post={postsData.data.rows[0]} />}
+            {postsData?.data?.rows[0] && <Card12 post={postsData.data.rows[0]} />}
             <div className="grid gap-6 md:gap-8">
-              {postsData.data.rows.filter((_:any, i:number) => i < 4).map((item:any, index:any) => (
+              {postsData?.data?.rows.filter((_:any, i:number) => i < 4).map((item:any, index:any) => (
                    <Card13 key={index} post={item} />
                 ))}
             </div>
