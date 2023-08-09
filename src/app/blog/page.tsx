@@ -19,9 +19,10 @@ const BlogPage = async ({searchParams}:{searchParams:any}) => {
   const TagGroupTag = await fetchTagGroupTag({type:2})
   const countPostGroupCategory = await fetchCountPostGroupCategory({})
   const category= await fetchCategory({type:2})
-  //  console.log(TagGroupTag);
-  //  console.log("countPostGroupCategory",countPostGroupCategory);
-   console.log(category);
+    console.log("postsData",postsData);
+    console.log("TagGroupTag",TagGroupTag);
+    console.log("countPostGroupCategory",countPostGroupCategory);
+   console.log('category',category);
    
   return (
     <div className="nc-BlogPage overflow-hidden relative">
