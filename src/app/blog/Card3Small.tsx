@@ -11,7 +11,7 @@ export interface Card3SmallProps {
 }
 
 const Card3Small: FC<Card3SmallProps> = ({ className = "h-full", post }) => {
-  const { name, id, updateTime, summary,status ,image} = post;
+  const { name, id, updateTime, summary,status ,image,slug} = post;
   return (
     <div
       className={`nc-Card3Small relative flex flex-col-reverse sm:flex-row sm:justify-between sm:items-center ${className}`}

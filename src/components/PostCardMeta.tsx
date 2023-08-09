@@ -17,7 +17,7 @@ const PostCardMeta: FC<any> = ({
   hiddenAvatar = false,
   size = "normal",
 }) => {
-  const { name, id, updateTime, summary,status } = meta;
+  const { name, id, updateTime, summary,status,slug } = meta;
   return (
     <div
       className={`nc-PostCardMeta inline-flex items-center fledx-wrap text-neutral-800 dark:text-neutral-200 ${
@@ -26,7 +26,7 @@ const PostCardMeta: FC<any> = ({
       data-nc-id="PostCardMeta"
     >
       <Link
-        href={`/blog/${id}`}
+        href={`/blog/${slug}`}
         className="flex-shrink-0 relative flex items-center space-x-2"
       >
         {!hiddenAvatar && (

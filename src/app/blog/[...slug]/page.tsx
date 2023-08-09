@@ -21,7 +21,7 @@ const Page = async ({
   params: any;
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
-  const postsData = await fetchListPost({projectId:2,id:params.slug[0]})
+  const postsData = await fetchListPost({slug:params.slug[0]})
   const post =postsData?.data?.rows[0]
   const renderHeader = () => {
     return (
