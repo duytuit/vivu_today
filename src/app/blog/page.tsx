@@ -5,19 +5,24 @@ import SectionMagazine5 from "./SectionMagazine5";
 import SectionLatestPosts from "./SectionLatestPosts";
 import BgGlassmorphism from "@/components/BgGlassmorphism";
 import SectionSubscribe2 from "@/components/SectionSubscribe2";
-import { fetchListPost } from "@/components/Blog/service";
+import { fetchCategory, fetchCountPostGroupCategory, fetchListPost, fetchTagGroupTag } from "@/components/Blog/service";
 import Card12 from "./Card12";
 import Card13 from "./Card13";
 import { useHandleParamUrl } from "@/hooks/useHandleParamUrl";
 
 const BlogPage = async ({searchParams}:{searchParams:any}) => {
    const defaultParam={ 
-    projectId:2,
     pageNum: 1, 
     pageSize: 20
    };
   const postsData = await fetchListPost({...defaultParam,...searchParams})
-  
+  const TagGroupTag = await fetchTagGroupTag({type:2})
+  const countPostGroupCategory = await fetchCountPostGroupCategory({})
+  const category= await fetchCategory({type:2})
+  //  console.log(TagGroupTag);
+  //  console.log("countPostGroupCategory",countPostGroupCategory);
+   console.log(category);
+   
   return (
     <div className="nc-BlogPage overflow-hidden relative">
       {/* ======== BG GLASS ======== */}
@@ -31,7 +36,7 @@ const BlogPage = async ({searchParams}:{searchParams:any}) => {
           <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
             {postsData.data.rows[0] && <Card12 post={postsData.data.rows[0]} />}
             <div className="grid gap-6 md:gap-8">
-              {postsData.data.rows.map((item:any, index:any) => (
+              {postsData.data.rows.filter((_:any, i:number) => i < 4).map((item:any, index:any) => (
                    <Card13 key={index} post={item} />
                 ))}
             </div>
@@ -43,7 +48,7 @@ const BlogPage = async ({searchParams}:{searchParams:any}) => {
         {/* <SectionAds /> */}
 
         {/* === SECTION 8 === */}
-        <SectionLatestPosts posts={postsData.data.rows} className="py-16 lg:py-28" />
+        <SectionLatestPosts category={category} TagGroupTag={TagGroupTag} countPostGroupCategory={countPostGroupCategory} posts={postsData.data.rows} className="py-16 lg:py-28" />
 
         {/* === SECTION 1 === */}
         <SectionSubscribe2 className="pb-16 lg:pb-28" />

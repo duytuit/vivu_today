@@ -16,12 +16,18 @@ export interface SectionLatestPostsProps {
   posts?: [];
   className?: string;
   postCardName?: "card3";
+  TagGroupTag?: [];
+  countPostGroupCategory?: [];
+  category?: [];
 }
 
 const SectionLatestPosts: FC<SectionLatestPostsProps> = ({
   posts,
   postCardName = "card3",
   className = "",
+  TagGroupTag,
+  countPostGroupCategory,
+  category,
 }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -37,6 +43,10 @@ const SectionLatestPosts: FC<SectionLatestPostsProps> = ({
     setLoading(true)
     setPageNumber({...pageNumber,pageNum:pageNumber.pageNum+1})
     setQueryParams({...pageNumber,pageNum:pageNumber.pageNum+1})
+    // if(posts){
+    //   setItems(items=>[...items, ...posts])
+    //  }
+    //  setLoading(false)
   };
   
   const renderCard = (post: any) => {
@@ -63,9 +73,9 @@ const SectionLatestPosts: FC<SectionLatestPostsProps> = ({
           </div>
         </div>
         <div className="w-full space-y-7 mt-24 lg:mt-0 lg:w-2/5 lg:pl-10 xl:pl-0 xl:w-1/3 ">
-          <WidgetTags />
-          <WidgetCategories />
-          <WidgetPosts />
+          <WidgetTags TagGroupTag={TagGroupTag} />
+          <WidgetCategories category={category} countPostGroupCategory={countPostGroupCategory}/>
+          <WidgetPosts posts={items} />
         </div>
       </div>
     </div>

@@ -6,17 +6,18 @@ import WidgetHeading1 from "./WidgetHeading1";
 
 export interface WidgetPostsProps {
   className?: string;
-  posts?: PostDataType[];
+  posts?: any;
 }
 
-const widgetPostsDemo: PostDataType[] = DEMO_POSTS.filter(
-  (_, i) => i > 2 && i < 7
-);
+// const widgetPostsDemo: PostDataType[] = DEMO_POSTS.filter(
+//   (_, i) => i > 2 && i < 7
+// );
 
 const WidgetPosts: FC<WidgetPostsProps> = ({
   className = "bg-neutral-100 dark:bg-neutral-800",
-  posts = widgetPostsDemo,
+  posts,
 }) => {
+ 
   return (
     <div className={`nc-WidgetPosts rounded-3xl overflow-hidden ${className}`}>
       <WidgetHeading1
@@ -24,11 +25,11 @@ const WidgetPosts: FC<WidgetPostsProps> = ({
         viewAll={{ label: "View all", href: "/#" }}
       />
       <div className="flex flex-col divide-y divide-neutral-200 dark:divide-neutral-700">
-        {posts.map((post) => (
+        {posts.filter((_:any, i:number) => i < 7).map((item:any) => (
           <Card3Small
             className="p-4 xl:px-5 xl:py-6 hover:bg-neutral-200 dark:hover:bg-neutral-700"
-            key={post.id}
-            post={post}
+            key={item.id}
+            post={item}
           />
         ))}
       </div>

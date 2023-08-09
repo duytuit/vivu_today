@@ -6,15 +6,16 @@ import WidgetHeading1 from "./WidgetHeading1";
 
 export interface WidgetCategoriesProps {
   className?: string;
-  categories?: TaxonomyType[];
+  countPostGroupCategory?:any;
+  category?:any;
 }
-
-const categoriesDemo: TaxonomyType[] = DEMO_CATEGORIES.filter((_, i) => i < 5);
 
 const WidgetCategories: FC<WidgetCategoriesProps> = ({
   className = "bg-neutral-100 dark:bg-neutral-800",
-  categories = categoriesDemo,
+  countPostGroupCategory,
+  category,
 }) => {
+
   return (
     <div
       className={`nc-WidgetCategories rounded-3xl overflow-hidden ${className}`}
@@ -25,12 +26,13 @@ const WidgetCategories: FC<WidgetCategoriesProps> = ({
       />
       <div className="flow-root">
         <div className="flex flex-col divide-y divide-neutral-200 dark:divide-neutral-700">
-          {categories.map((category) => (
+          {countPostGroupCategory?.data.rows.length>0&&countPostGroupCategory.data.rows.map((item:any) => (
             <CardCategory1
               className="p-4 xl:p-5 hover:bg-neutral-200 dark:hover:bg-neutral-700"
-              key={category.id}
-              taxonomy={category}
+              key={item.category_id}
+              taxonomy={item}
               size="normal"
+              category={category}
             />
           ))}
         </div>

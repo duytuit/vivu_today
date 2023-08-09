@@ -49,6 +49,7 @@ export const formatCurrencyV2=(value:any) =>{
     return new Intl.NumberFormat().format(number).replace(/\./g, ',');
 }
 export const convertObjToParam=(body:any) =>{
+    body = { projectId: 2,...body} 
     return Object.keys(body)
       .map(function (key) {
         return key + '=' + body[key];
