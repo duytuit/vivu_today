@@ -8,9 +8,16 @@ import SectionSubscribe2 from "@/components/SectionSubscribe2";
 import { fetchListPost } from "@/components/Blog/service";
 import Card12 from "./Card12";
 import Card13 from "./Card13";
+import { useHandleParamUrl } from "@/hooks/useHandleParamUrl";
 
-const BlogPage = async () => {
-  const postsData = await fetchListPost({projectId:2})
+const BlogPage = async ({searchParams}:{searchParams:any}) => {
+   const defaultParam={ 
+    projectId:2,
+    pageNum: 1, 
+    pageSize: 20
+   };
+  const postsData = await fetchListPost({...defaultParam,...searchParams})
+  
   return (
     <div className="nc-BlogPage overflow-hidden relative">
       {/* ======== BG GLASS ======== */}
