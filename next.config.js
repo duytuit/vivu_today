@@ -32,7 +32,7 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
-    domains: ['http://103.237.144.38:8090']
+    domains: [process.env.UPLOAD_CDN]
   },
   async rewrites() {
     return [
